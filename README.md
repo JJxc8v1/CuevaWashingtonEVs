@@ -211,6 +211,11 @@ FROM WashingtonEV.EVdata
 ALTER TABLE EVdata
 MODIFY COLUMN Electric_Utility VARCHAR(200)
 
+-- For ease of viewing, the "Make" column and the "Model" column should be concatenated together. Create a column in the table editor, and then use an update statement to set the concat for the newly created column
+
+UPDATE WashingtonEV.EVdata
+SET Full_Name = CONCAT(Make," ",Model)
+
 -- Once all checks/cleaning is done to EVdata table, documenting what changes you did is important. I'd usually note down these changes in a word doc but it can also be done in SQL by adding commentary after two hypens -- 
 
 -- A database needs to be secure in whichever sql server or DataLake it sits on. Within SQL Workbench, one can add/remove permissions from other SQL Workbench users
